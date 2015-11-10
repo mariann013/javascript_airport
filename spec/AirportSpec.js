@@ -5,18 +5,20 @@ describe ("Airport", function() {
 
     it("instructs a plane to land", function() {
       spyOn(airport, "isStormy").and.returnValue(false);
-      expect(airport.isStormy).toBe(false);
-      // expect(airport.land(plane)).toEqual([plane]);
+      // expect(airport.isStormy).toBe(false);
+      expect(airport.land(plane)).toEqual([plane]);
     });
 
 
     it("instructs a plane to take off", function() {
+      spyOn(airport, "isStormy").and.returnValue(false);
+      airport.land(plane);
       expect(airport.take_off(plane)).toEqual(plane);
     });
 
     it("can not land plane is airport is full", function() {
       spyOn(airport, "isStormy").and.returnValue(false);
-      for(var i = 0; i <20; ++i) {
+      for(var i = 0; i <19; ++i) {
         airport.land(plane);
       }
       expect(function() { airport.land(plane) }).toThrow("Can not land, airport is full");
