@@ -8,7 +8,7 @@ describe ("Airport", function() {
       airport = new Airport;
       planes = [];
       plane = "plane";
-
+      capacity = airport.capacity;
     });
 
     it("instructs a plane to land", function() {
@@ -23,9 +23,9 @@ describe ("Airport", function() {
       expect(airport.take_off(plane)).toEqual(plane);
     });
 
-    it("can not land plane is airport is full", function() {
+    it("can not land plane is airport is at default capacity", function() {
       spyOn(airport, "isStormy").and.returnValue(false);
-      for(var i = 0; i <20; ++i) {
+      for(var i = 0; i <capacity; ++i) {
         airport.land(plane);
       }
       expect(function() { airport.land(plane) }).toThrow("Can not land, airport is full");
