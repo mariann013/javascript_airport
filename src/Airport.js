@@ -1,20 +1,27 @@
 function Airport(weatherReporter) {
 
-  var planes = [];
+  this.planes = [];
 
     Airport.prototype.land = function(plane) {
       if (this.isStormy()) {
         throw "Can not land, weather is stormy";
-      } else if (planes.length < 20) {
-          planes.push(plane);
-          return planes;
+      } else if (this.planes.length < 20) {
+          this.planes.push(plane);
+          return this.planes;
       } else {
         throw "Can not land, airport is full";
       }
-      }
+    }
 
     Airport.prototype.take_off = function(plane) {
-      return planes.pop();
+      if (this.isStormy()) {
+        throw "Can not take off, weather is stormy";
+      } else if (this.planes.indexOf(plane) === -1) {
+        throw "Can not take off, this plane is not at this airport";
+      } else {
+          this.planes.splice(this.planes.indexOf(plane), 1);
+        return plane;
+      }
     }
 
     Airport.prototype.isStormy = function(WeatherReport) {
