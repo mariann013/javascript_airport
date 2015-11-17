@@ -4,6 +4,11 @@ describe ("Airport", function() {
   var plane;
   var planes;
 
+  it("should let you set an airport default capacity", function() {
+    airport = new Airport(40);
+    expect(airport.capacity).toEqual(40);
+  });
+
     beforeEach( function() {
       airport = new Airport;
       planes = [];
