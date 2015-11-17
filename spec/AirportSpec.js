@@ -26,6 +26,7 @@ describe ("Airport", function() {
       spyOn(airport, "isStormy").and.returnValue(false);
       spyOn(airport, "planeIsHere").and.returnValue(false);
       airport.land(plane);
+
       expect(airport.take_off(plane)).toEqual(plane);
     });
 
@@ -54,6 +55,12 @@ describe ("Airport", function() {
     });
 
     it("should not let a landed plane land", function() {
+      spyOn(airport, "isStormy").and.returnValue(false);
+      spyOn(airport, "planeIsHere").and.returnValue(true);
+      expect(function() { airport.land(plane) }).toThrow("Can not land, plane has already landed");
+    });
+
+    it("should not let a flying plane land", function() {
       spyOn(airport, "isStormy").and.returnValue(false);
       spyOn(airport, "planeIsHere").and.returnValue(true);
       expect(function() { airport.land(plane) }).toThrow("Can not land, plane has already landed");

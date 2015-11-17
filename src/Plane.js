@@ -1,8 +1,16 @@
 function Plane() {
 
-  this.status = "landed";
+  this.landed = true;
 };
 
 Plane.prototype.isLanded = function () {
-  return (this.status === "landed");
+  return (this.landed === true);
+};
+
+Plane.prototype.land = function () {
+  this.landed = true;
+};
+
+Plane.prototype.flying = function () {
+  this.landed = false;
 };

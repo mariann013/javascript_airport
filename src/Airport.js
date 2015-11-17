@@ -20,6 +20,8 @@ function Airport(capacity) {
     Airport.prototype.take_off = function(plane) {
       if (this.isStormy()) {
         throw "Can not take off, weather is stormy";
+      } else if (this.planeIsHere() === false) {
+        throw "Can not take off, plane has already landed";
       } else if (this.planes.indexOf(plane) === -1) {
         throw "Can not take off, this plane is not at this airport";
       } else {
