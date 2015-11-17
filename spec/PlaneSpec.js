@@ -6,7 +6,7 @@ describe ("Plane", function() {
     plane = new Plane();
   });
 
-  it("should be flying by default", function() {
-    expect(plane.isFlying()).toEqual(true);
+  it("should be landed by default", function() {
+    expect(plane.isLanded()).toEqual(true);
   });
 })

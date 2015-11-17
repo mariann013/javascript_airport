@@ -7,6 +7,8 @@ function Airport(capacity) {
     Airport.prototype.land = function(plane) {
       if (this.isStormy()) {
         throw "Can not land, weather is stormy";
+      } else if (this.planeIsHere()) {
+        throw "Can not land, plane has already landed";
       } else if (this.planes.length < capacity) {
           this.planes.push(plane);
           return this.planes;
@@ -29,4 +31,9 @@ function Airport(capacity) {
     Airport.prototype.isStormy = function(WeatherReport) {
       currentWeather = new WeatherReporter;
       return currentWeather.isStormy();
+    }
+
+    Airport.prototype.planeIsHere = function(plane) {
+      currentPlane = new Plane;
+      return currentPlane.isLanded();
     }
