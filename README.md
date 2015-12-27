@@ -1,4 +1,4 @@
-# javascript_airport
+# javascript_airport [![Build Status](https://travis-ci.org/mariann013/javascript_airport.svg?branch=master)](https://travis-ci.org/mariann013/javascript_airport)
 
 Description:
 For the airport challenge I have completed all of the user requirements as I have interpreted them and all my tests pass. 
